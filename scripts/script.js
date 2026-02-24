@@ -277,5 +277,10 @@ function updateDashboard() {
   document.getElementById("interview-count").innerText = interviewList.length;
   document.getElementById("rejected-count").innerText = rejectedList.length;
 
-
+  // Right side job badge update
+  const badge = document.querySelector(".total-job-badge");
+  if (currentStatus === "all-filter-btn") badge.innerText = `${totalJobs} Jobs`;
+  else if (currentStatus === "interview-filter-btn")
+    badge.innerText = `${interviewList.length} Jobs`;
+  else badge.innerText = `${rejectedList.length} Jobs`;
 }
