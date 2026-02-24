@@ -1,6 +1,6 @@
 let interviewList = [];
 let rejectedList = [];
-let currentStatus = "all";
+let currentStatus = "all-filter-btn";
 
 let total = document.getElementById("total-count");
 let interviewCount = document.getElementById("interview-count");
@@ -175,11 +175,17 @@ document.addEventListener("click", function (event) {
     if (jobCard) {
       const jobTitle = jobCard.querySelector(".jobName").innerText;
 
+     
       interviewList = interviewList.filter((item) => item.jobName !== jobTitle);
       rejectedList = rejectedList.filter((item) => item.jobName !== jobTitle);
 
+      
       jobCard.remove();
+
       calculateCount();
+    
+      if (currentStatus == "interview-filter-btn") renderInterview();
+      if (currentStatus == "rejected-filter-btn") renderRejected();
     }
   }
 });
@@ -203,6 +209,7 @@ function renderInterview() {
   // Checking if interview list is empty
   if (interviewList.length === 0) {
     filterSection.innerHTML = emptyStateHTML;
+    updateJobCount(); 
     return;
   }
 
@@ -232,6 +239,7 @@ function renderInterview() {
         </div>`;
     filterSection.appendChild(div);
   }
+  updateJobCount();
 }
 
 function renderRejected() {
@@ -240,6 +248,7 @@ function renderRejected() {
   // Checking if rejected list is empty
   if (rejectedList.length === 0) {
     filterSection.innerHTML = emptyStateHTML;
+    updateJobCount();
     return;
   }
 
@@ -269,18 +278,5 @@ function renderRejected() {
         </div>`;
     filterSection.appendChild(div);
   }
-}
-
-function updateDashboard() {
-  const totalJobs = document.querySelectorAll("#allCards .jobCard").length;
-  document.getElementById("total-count").innerText = totalJobs;
-  document.getElementById("interview-count").innerText = interviewList.length;
-  document.getElementById("rejected-count").innerText = rejectedList.length;
-
-  // Right side job badge update
-  const badge = document.querySelector(".total-job-badge");
-  if (currentStatus === "all-filter-btn") badge.innerText = `${totalJobs} Jobs`;
-  else if (currentStatus === "interview-filter-btn")
-    badge.innerText = `${interviewList.length} Jobs`;
-  else badge.innerText = `${rejectedList.length} Jobs`;
+  updateJobCount();
 }
