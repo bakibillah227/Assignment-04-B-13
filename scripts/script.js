@@ -132,28 +132,21 @@ function renderInterview() {
               <h2 class="jobName text-xl font-bold text-slate-800">
                 ${interview.jobName}
               </h2>
-              <p class="positionName text-slate-500 font-medium">React Native Developer</p>
+              <p class="positionName text-slate-500 font-medium">${interview.positionName}</p>
             </div>
 
-            <div class="jobNature flex items-center gap-2 text-slate-400 text-sm mb-6">
-              <span>Remote</span>
-              <span>•</span>
-              <span>Full-time</span>
-              <span>•</span>
-              <span>$130,000 - $175,000</span>
-            </div>
+            <span class="jobNature flex items-center gap-4 text-slate-400 text-sm mb-6">${interview.jobNature}</span>
 
             <div class="mb-6">
               <span
                 class="jobCondition bg-blue-50 text-slate-700 text-xs font-bold px-3 py-1.5 rounded uppercase tracking-wider"
               >
-                Not Applied
+                ${interview.jobCondition}
               </span>
             </div>
 
             <p class="jobDetails text-slate-600 text-sm mb-8 leading-relaxed">
-              Build cross-platform mobile applications using React Native. Work
-              on products used by millions of users worldwide.
+              ${interview.jobDetails}
             </p>
 
             <div class="flex gap-3">
