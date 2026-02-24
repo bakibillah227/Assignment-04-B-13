@@ -270,3 +270,12 @@ function renderRejected() {
     filterSection.appendChild(div);
   }
 }
+
+function updateDashboard() {
+  const totalJobs = document.querySelectorAll("#allCards .jobCard").length;
+  document.getElementById("total-count").innerText = totalJobs;
+  document.getElementById("interview-count").innerText = interviewList.length;
+  document.getElementById("rejected-count").innerText = rejectedList.length;
+
+
+}
